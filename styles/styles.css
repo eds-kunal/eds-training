@@ -20,9 +20,14 @@
   --text-color: black;
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback;
+  /* --body-font-family: roboto, roboto-fallback;
   --heading-font-family: var(--body-font-family);
-  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
+  --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace; */
+
+  --body-font-family: 'Times New Roman', Times, serif;
+  --heading-font-family: var(--body-font-family);
+  --fixed-font-family: 'Times New Roman', Times, serif;
+
 
   /* body sizes */
   --body-font-size-m: 22px;
@@ -160,7 +165,8 @@ button {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  border-radius: 30px;
+  /* border-radius: 30px; */
+  border:none;
 }
 
 a.button:hover,
@@ -182,6 +188,7 @@ button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color);
+  border: none;
 }
 
 main img {
