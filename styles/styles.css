@@ -24,7 +24,6 @@
   --heading-font-family: var(--body-font-family);
   --fixed-font-family: 'Roboto Mono', menlo, consolas, 'Liberation Mono', monospace;
 
-
   /* body sizes */
   --body-font-size-m: 22px;
   --body-font-size-s: 18px;
@@ -42,6 +41,12 @@
   --nav-height: 64px;
 }
 
+@font-face {
+  font-family: roboto-fallback;
+  size-adjust: 100.06%;
+  ascent-override: 95%;
+  src: local('Arial');
+}
 
 @media (width >= 900px) {
   :root {
@@ -57,7 +62,7 @@
 body {
   font-size: var(--body-font-size-m);
   margin: 0;
-  font-family:"Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--body-font-family);
   line-height: 1.6;
   color: var(--text-color);
   background-color: var(--background-color);
@@ -78,7 +83,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif);
+  font-family: var(--heading-font-family);
   font-weight: 600;
   line-height: 1.25;
   margin-top: 1em;
@@ -93,7 +98,15 @@ h4 { font-size: var(--heading-font-size-m); }
 h5 { font-size: var(--heading-font-size-s); }
 h6 { font-size: var(--heading-font-size-xs); }
 
-
+p,
+dl,
+ol,
+ul,
+pre,
+blockquote {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
 code,
 pre {
@@ -117,11 +130,21 @@ main pre {
   white-space: pre;
 }
 
+/* links */
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  color: var(--link-hover-color);
+}
 
 /* buttons */
 a.button:any-link,
 button {
-  font-family: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: var(--body-font-family);
   display: inline-block;
   box-sizing: border-box;
   text-decoration: none;
@@ -136,7 +159,8 @@ button {
   margin: 16px 0;
   white-space: nowrap;
   overflow: hidden;
-  border:none;  
+  text-overflow: ellipsis;
+  border-radius: 30px;
 }
 
 a.button:hover,
@@ -158,7 +182,6 @@ button.secondary {
   background-color: unset;
   border: 2px solid currentcolor;
   color: var(--text-color);
-  border: none;
 }
 
 main img {
@@ -178,6 +201,16 @@ main img {
   width: 100%;
 }
 
+/* sections */
+main .section {
+  padding: 64px 16px;
+}
+
+@media (width >= 600px) {
+  main .section {
+    padding: 64px 32px;
+  }
+}
 
 @media (width >= 900px) {
   .section > div {
@@ -189,112 +222,5 @@ main img {
 /* section metadata */
 main .section.light,
 main .section.highlight {
-  background-color: green;
-}
-
-.button-container {
-  > em > a {
-      font-size:14px;
-      font-weight: 600;
-  }
-
-  > em > a:link, > em > button {
-      background-color: #FFEA00;
-      padding:14px 35px;   
-  }
-
-
-}
-
-main {
-  padding-top:200px !important;
-}
-ol {
-  padding-inline-start:10px;
-}
-@media (width>=768px){
-  ol {
-    padding-inline-start:40px;
-  }
-}
-
-.default-content-wrapper > h2 {
-  width: auto;
-  z-index:-1;
-  display: inline-block;
-  position: relative;
-  text-align: left;
-  font-size: 36px;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: normal;
-  justify-content: center;
-  margin:27px 14px 13.5px;
-  padding: 8px 0px 16px;
- 
-}
-.default-content-wrapper > h2::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 84px;
-  border-bottom: 2px solid #ffea00;
-}
-
-
-/* Magazine Page */
-main:has(.section.magazine-image) {
-  padding: 0 14px;
-  > .section.magazine-image {
-    > .default-content-wrapper {
-      > picture {
-        > img {
-          margin: 0 7px;
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  > .section.magazine-text {
-    > .default-content-wrapper {
-      > h2:first-child {
-        all:unset;
-        font-family: var(--fontFamilySerif, "Asar", Georgia, "Times New Roman", Times, serif);
-        font-weight: var(--fontWeightNormal, normal);
-        margin-bottom: 13.5px;
-        margin-top: 27px;
-        font-size:40px;
-      }
-      >h2:first-child::before{
-        border-bottom: none;
-      }
-      > p{
-        font-size:18px;
-        line-height: 2.5;
-        margin: 0 0 13.5px;
-        text-align: justify;
-        font-family: var(--fontFamilySansSerif,"Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif);
-      }
-    }
-  }
-}
-
-
-@media (width>1024px){
-  main:has(.section.magazine-image) {
-    display:flex;
-    flex-wrap:wrap
-  }
-  .section.magazine-image {
-    flex:0 0 100%;
-  }
-  .section.magazine-text{
-    flex: 0 0 66%;
-    padding-right:60px;
-    padding-left:40px;
-  }
-  .section.magazine-list{
-    flex:0 1 20%
-  }
+  background-color: var(--light-color);
 }
