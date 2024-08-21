@@ -1,8 +1,11 @@
 .section.article-featured-container > .article-featured-wrapper > .article-featured.block {
+    font-family: "Source Sans 3", "Helvetica Neue", Helvetica, Arial, sans-serif;   
+
     > div {
         display: flex;
         text-align: left;
         background-color: #efefef;
+        flex-direction: column-reverse;
 
         > div {
             flex: 0 0 65%;
@@ -27,7 +30,7 @@
             > p:first-child {
                 font-size: 18px;
                 margin: 0 0 13.5px;
-                font-weight: 700;
+                font-weight: 600;
             }
 
             > p:nth-child(3) {
@@ -47,10 +50,20 @@
             }
         }
 
-        @media(width<=768px){
-                flex-direction: column-reverse;
+        @media(width>=768px){
+                flex-direction: row;
         }
 
     }
 
+
+}
+
+.section.article-featured-container h1 {
+    font-family: "Asar", Georgia, "Times New Roman", Times, serif;
+    font-weight: var(--fontWeightNormal, normal) !important;
+    margin-bottom: 13.5px !important;
+    margin-top: 27px !important;
+    font-size: 40px !important;
+    
 }
