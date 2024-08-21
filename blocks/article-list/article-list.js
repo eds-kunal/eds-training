@@ -51,7 +51,7 @@ function createHTMLForBlock(json){
             anchorTag.append(titleSpan);
             anchorTag.append(dateSpan);
 
-            anchorTag.href='https://main--eds-training--eds-kunal.hlx.page'+page.path;
+            anchorTag.href='https://main--eds-training--eds-kunal.hlx.live'+page.path;
 
             listItem.append(anchorTag);
            allListItems.push(listItem);
