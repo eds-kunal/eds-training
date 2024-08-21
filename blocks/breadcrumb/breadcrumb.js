@@ -23,15 +23,12 @@ async function getItems() {
   let itemPaths = generatePathArray(window.location.pathname);
   itemPaths[itemPaths.length - 1] = itemPaths[itemPaths.length - 1].replace(/\/$/, '');
   itemPaths = itemPaths.length > 0 ? itemPaths : [];
-  console.log(itemPaths);
   const pages = await ffetch('/query-index.json')
     .filter((page) => itemPaths.includes(page.path))
     .all();
-    console.log(pages);
   const items = itemPaths.map((itemPath) => {
     // get the title from the pages, based on its path
     const page = pages.find((entry) => entry.path === itemPath);
-    console.log(page.title);
     let title = page && page.title !== '' ? page.title : page.title;
     return {
       title,
